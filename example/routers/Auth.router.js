@@ -13,7 +13,7 @@ module.exports = rapid => {
   }
 
   return new rapid.Router()
-    .post('/api/auth/login', rapid.middleware.login(loginUser), context => {
+    .post('/auth/login', rapid.middleware.login(loginUser), context => {
       console.log('authToken:', context.state.authToken);
       context.response.body = {
         authToken: context.state.authToken,
@@ -21,10 +21,10 @@ module.exports = rapid => {
       };
       context.response.status = 200;
     })
-    .get('/api/auth/secure', rapid.middleware.auth(), context => {
+    .get('/auth/secure', rapid.middleware.auth(), context => {
       context.response.body = 'Success';
     })
-    .get('/api/auth/insecure', context => {
+    .get('/auth/insecure', context => {
       context.response.body = 'Success';
     });
 };
