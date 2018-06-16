@@ -16,11 +16,15 @@
     "knex": "^0.14.6",
     "knex-migrate": "^1.5.5",
     "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-jwt": "^3.3.2",
     "lodash": "^4.17.10",
     "objection": "^1.1.10",
     "pg": "^7.4.3",
+    "require-directory": "^2.1.1",
     "sqlite3": "^4.0.0",
     "then-fs": "^2.0.0",
+    "uuid": "^3.2.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
