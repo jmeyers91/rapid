@@ -18,6 +18,8 @@ This creates a project with a basic directory structure and a few example module
 
 ## Using the Rapid CLI
 
+`npm install --global @simplej/rapid-cli` - Install the CLI.
+
 `rapid init` - Create a blank Rapid project.
 
 `rapid` - Start the app in the current directory using the models, controllers, and API routers found in the project.
