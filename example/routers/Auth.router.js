@@ -14,7 +14,6 @@ module.exports = rapid => {
 
   return new rapid.Router()
     .post('/auth/login', rapid.middleware.login(loginUser), context => {
-      console.log('authToken:', context.state.authToken);
       context.response.body = {
         authToken: context.state.authToken,
         user: context.state.user,
