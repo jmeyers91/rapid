@@ -1,0 +1,3 @@
+node_modules
+/.jwtsecret
+/config/config.js

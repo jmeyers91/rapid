@@ -1,16 +1,7 @@
 
 module.exports = rapid => {
-  const users = [
-    {username: 'jim', password: 'secret', age: 26},
-    {username: 'sarah', password: 'hasra', age: 23},
-  ];
-
-  async function loginUser(credentials) {
-    return users.find(user =>
-      user.username === credentials.username &&
-      user.password === credentials.password
-    );
-  }
+  const { userController } = rapid.controllers;
+  const loginUser = userController.login.bind(userController);
 
   return new rapid.Router()
     .post('/auth/login', rapid.middleware.login(loginUser), context => {
@@ -21,10 +12,9 @@ module.exports = rapid => {
       context.response.status = 200;
     })
     .get('/auth/secure', rapid.middleware.auth(), context => {
-      context.response.body = 'Success';
+      context.response.body = 'Access granted!';
     })
     .get('/auth/insecure', context => {
-      context.response.body = 'Success';
+      context.response.body = 'Welcome guest!';
     });
 };
-
