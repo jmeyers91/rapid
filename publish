@@ -7,7 +7,7 @@ const { writeFile } = require('then-fs');
 async function main() {
   const version = await bumpVersion();
   await run('git', ['add', '*']);
-  await run('git', ['commit', '-am', '🚀']);
+  await run('git', ['commit', '-am', '🚀 ' + version]);
   await run('git', ['push', 'origin', 'master']);
   await run('npm', ['publish', '--access=public']);
   console.log(`Rapid version ${version} published`);
