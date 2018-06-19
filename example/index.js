@@ -1,16 +1,20 @@
-const Rapid = require('../lib/Rapid');
 
-const rapid = new Rapid(__dirname);
+async function main() {
+  const Rapid = require('../lib/Rapid');
 
-rapid
-  .addConfigs(
-    'config/config.default.js',
-    'config/config.js'
-  )
-  .addModels('models/**.model.js')
-  .addControllers('controllers/**.controller.js')
-  .addRouters('routers/**.router.js');
+  const rapid = new Rapid(__dirname)
+    .clear()
+    .migrate()
+    .seed();
 
-rapid.start().catch(error => console.log(error));
+  rapid.discover
+    .config('config/config.default.js', 'config/config.js')
+    .models('models/**/*.model.js')
+    .controllers('controllers/**/*.controller.js')
+    .routers('routers/**/*.router.js')
+    .seeds('seeds/**/*.seed.js');
 
-module.exports = rapid;
+  await rapid.start();
+}
+
+main().catch(error => console.log(error));

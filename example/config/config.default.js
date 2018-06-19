@@ -1,6 +1,6 @@
 module.exports = {
   webserver: {
-    port: 8080
+    port: 9090
   },
   database: {
     connection: {
