@@ -3,7 +3,8 @@
 ## Install
 
 ```
-npm install --global @simplej/rapid
+npm install @simplej/rapid
+npm install --global @simplej/rapid-cli
 ```
 
 ## Create a Rapid app
@@ -17,8 +18,6 @@ npm run start
 This creates a project with a basic directory structure and a few example modules.
 
 ## Using the Rapid CLI
-
-`npm install --global @simplej/rapid-cli` - Install the CLI.
 
 `rapid init` - Create a blank Rapid project.
 
