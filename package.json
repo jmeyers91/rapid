@@ -1,6 +1,6 @@
 {
   "name": "@simplej/rapid",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "lib/Rapid.js",
   "scripts": {
@@ -11,7 +11,6 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "globby": "^8.0.1",
-    "http-graceful-shutdown": "^2.1.1",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
     "knex-migrate": "^1.5.5",
