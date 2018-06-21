@@ -1,6 +1,6 @@
 {
   "name": "@simplej/rapid",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "lib/Rapid.js",
   "scripts": {
