@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/Rapid.js",
   "scripts": {
-    "test": "jest"
+    "test": "export NODE_ENV='test' && jest"
   },
   "author": "James Meyers",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "jest": "^23.1.0"
   }
 }
