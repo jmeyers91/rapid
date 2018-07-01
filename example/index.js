@@ -2,10 +2,7 @@
 async function main() {
   const Rapid = require('../lib/Rapid');
 
-  const rapid = new Rapid(__dirname)
-    .clear()
-    .migrate()
-    .seed();
+  const rapid = new Rapid(__dirname);
 
   rapid.discover
     .configs('config/config.default.js', 'config/config.js')
@@ -14,7 +11,11 @@ async function main() {
     .routers('routers/**/*.router.js')
     .seeds('seeds/**/*.seed.js');
 
-  await rapid.start();
+  await rapid
+    .clear()
+    .migrate()
+    .seed()
+    .start();
 }
 
 main();

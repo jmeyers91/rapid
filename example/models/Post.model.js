@@ -1,9 +1,11 @@
 
 module.exports = rapid => {
-  return class Post extends rapid.Model {
-    static get tableName() {
-      return 'posts';
-    }
+  const omit = require('lodash/omit');
+  const { Model, models } = rapid;
+
+  return class Post extends Model {
+    static get tableName() { return 'posts'; }
+    static get singularName() { return 'post'; }
 
     static get jsonSchema() {
       return {
@@ -14,6 +16,21 @@ module.exports = rapid => {
           title: {type: 'string', minLength: 2},
           content: {type: 'string', minLength: 2},
         },
+      };
+    }
+
+    static get relationMappings() {
+      return {
+
+        author: {
+          relation: Model.BelongsToOneRelation,
+          modelClass: models.User,
+          join: {
+            from: 'users.id',
+            to: 'posts.authorId',
+          }
+        },
+
       };
     }
   }

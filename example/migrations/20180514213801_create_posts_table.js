@@ -5,6 +5,7 @@ exports.up = async knex => {
     table.increments('id').primary();
     table.timestamps(true, true);
 
+    table.integer('author_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
     table.string('title').notNullable();
     table.string('content').notNullable();
   });
