@@ -1,6 +1,5 @@
 
 module.exports = rapid => {
-  const omit = require('lodash/omit');
   const { Model, models } = rapid;
 
   return class Post extends Model {
