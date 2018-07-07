@@ -8,11 +8,14 @@ const cwd = __dirname;
 
 async function main() {
   const version = await bumpVersion();
+
   await execa('git', ['add', '*'], {cwd});
   await execa('git', ['commit', '-am', '🚀 ' + version], {cwd});
   await execa('git', ['push', 'origin', 'master'], {cwd});
   await execa('npm', ['publish', '--access=public'], {cwd});
   console.log(`@simplej/rapid version ${version} published`);
+
+  return version;
 }
 
 async function bumpVersion() {
