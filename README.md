@@ -25,7 +25,7 @@ This creates a project with a basic directory structure and a few example module
 
 `rapid --root ./path/to/app` - Pass a directory to rapid instead of using the current directory.
 
-`rapid --watch` - Start the app and restart on changes.
+`rapid watch` - Start the app and restart on changes.
 
 `rapid migrate` - Run the migrations in `./migrations`.
 
