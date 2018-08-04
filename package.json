@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
+    "eventemitter3": "^3.1.0",
     "globby": "^8.0.1",
     "graphql": "^0.13.2",
     "install": "^0.12.1",
@@ -33,7 +35,6 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "axios": "^0.18.0",
     "jest": "^23.1.0",
     "execa": "^0.10.0"
   }
