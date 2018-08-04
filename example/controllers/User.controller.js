@@ -1,4 +1,3 @@
-
 module.exports = rapid => {
   const { verifyPassword } = rapid.helpers;
   return class UserController {
@@ -8,16 +7,20 @@ module.exports = rapid => {
     }
 
     getUserById(id) {
-      return this.getUsers().where('id', id).first();
+      return this.getUsers()
+        .where('id', id)
+        .first();
     }
 
     getByUsername(username) {
-      return this.getUsers().where('username', username).first();
+      return this.getUsers()
+        .where('username', username)
+        .first();
     }
 
     async login({ username, password }) {
       const user = await this.getByUsername(username);
-      if(user && await verifyPassword(password, user.password)) {
+      if (user && (await verifyPassword(password, user.password))) {
         delete user.password;
         return user;
       }
