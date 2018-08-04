@@ -4,7 +4,8 @@
   "description": "",
   "main": "lib/Rapid.js",
   "scripts": {
-    "test": "export NODE_ENV='test' && jest"
+    "test": "export NODE_ENV='test' && jest",
+    "format": "npx prettier --single-quote --write {lib,example,tests}/**/*.js"
   },
   "author": "James Meyers",
   "license": "ISC",
@@ -35,7 +36,9 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "execa": "^0.10.0",
     "jest": "^23.1.0",
-    "execa": "^0.10.0"
+    "npx": "^10.2.0",
+    "prettier": "^1.14.0"
   }
 }
