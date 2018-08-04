@@ -5,7 +5,7 @@
   "main": "lib/Rapid.js",
   "scripts": {
     "test": "export NODE_ENV='test' && jest",
-    "format": "npx prettier --single-quote --write {lib,example,tests}/**/*.js"
+    "format": "npx prettier --single-quote --write \"{lib,example,tests}/**/*.js\""
   },
   "author": "James Meyers",
   "license": "ISC",
