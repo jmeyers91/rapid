@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "ajv": "^6.5.2",
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "eventemitter3": "^3.1.0",

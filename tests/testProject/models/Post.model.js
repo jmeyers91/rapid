@@ -1,4 +1,3 @@
-
 module.exports = rapid => {
   return class Post extends rapid.Model {
     static get tableName() {
@@ -10,11 +9,11 @@ module.exports = rapid => {
         type: 'object',
         required: ['title', 'content'],
         properties: {
-          id: {type: 'integer'},
-          title: {type: 'string', minLength: 2},
-          content: {type: 'string', minLength: 2},
-        },
+          id: { type: 'integer' },
+          title: { type: 'string', minLength: 2 },
+          content: { type: 'string', minLength: 2 }
+        }
       };
     }
-  }
+  };
 };

@@ -1,4 +1,3 @@
-
 async function main() {
   const Rapid = require('../lib/Rapid');
 

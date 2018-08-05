@@ -1,4 +1,3 @@
-
 module.exports = rapid => {
   const { userController } = rapid.controllers;
   const loginUser = userController.login.bind(userController);
@@ -7,7 +6,7 @@ module.exports = rapid => {
     .post('/auth/login', rapid.middleware.login(loginUser), context => {
       context.response.body = {
         authToken: context.state.authToken,
-        user: context.state.user,
+        user: context.state.user
       };
       context.response.status = 200;
     })

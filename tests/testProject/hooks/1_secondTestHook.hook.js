@@ -1,4 +1,3 @@
-
 module.exports = rapid => ({
   rapidWillStop() {
     rapid.rapidWillStop__ran++;
@@ -94,7 +93,7 @@ module.exports = rapid => ({
 
   rapidDidStart() {
     rapid.rapidDidStart__ran++;
-  },
+  }
 });
 
 module.exports.runOrder = 10;

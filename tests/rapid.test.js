@@ -2,13 +2,16 @@ const path = require('path');
 const Rapid = require('../lib/Rapid');
 const testProject = path.join(__dirname, 'testProject');
 const createTestRapid = config => {
-  return new Rapid(testProject, config).clear().migrate().seed().autoload();
+  return new Rapid(testProject, config)
+    .clear()
+    .migrate()
+    .seed()
+    .autoload();
 };
 const rapidTest = Rapid.test(createTestRapid);
 const axios = require('axios');
 
 describe('Rapid', () => {
-
   test('Should be a test environment', () => {
     expect(process.env.NODE_ENV).toEqual('test');
   });
@@ -35,17 +38,24 @@ describe('Rapid', () => {
 
   rapidTest('Should not be able to view changes between tests', async rapid => {
     await rapid.models.Post.query().insert([
-      {title: 'Test post', content: 'test post content'},
+      { title: 'Test post', content: 'test post content' }
     ]);
   });
 
-  rapidTest('Should not be able to view changes between tests (VERIFY)', async rapid => {
-    const post = await rapid.models.Post.query().where('title', 'Test post').first();
-    expect(post).toBeFalsy();
-  });
+  rapidTest(
+    'Should not be able to view changes between tests (VERIFY)',
+    async rapid => {
+      const post = await rapid.models.Post.query()
+        .where('title', 'Test post')
+        .first();
+      expect(post).toBeFalsy();
+    }
+  );
 
   rapidTest('Should run seeds', async rapid => {
-    const user = await rapid.models.User.query().where('name', 'Jim').first();
+    const user = await rapid.models.User.query()
+      .where('name', 'Jim')
+      .first();
     expect(user).toBeTruthy();
   });
 
@@ -64,7 +74,9 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should use test database', async rapid => {
-    expect(rapid.database.config.connection.database).toEqual('rapid_example_test');
+    expect(rapid.database.config.connection.database).toEqual(
+      'rapid_example_test'
+    );
   });
 
   rapidTest('Should be able to discover routes', async rapid => {
@@ -73,7 +85,9 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should run seeds', async rapid => {
-    const user = await rapid.models.User.query().where('name', 'Jim').first();
+    const user = await rapid.models.User.query()
+      .where('name', 'Jim')
+      .first();
     expect(user).toBeTruthy();
   });
 
@@ -99,5 +113,5 @@ describe('Rapid', () => {
     expect(rapid.webserverWillListen__ran).toEqual(2);
     expect(rapid.webserverDidListen__ran).toEqual(2);
     expect(rapid.rapidDidStart__ran).toEqual(2);
-  })
+  });
 });

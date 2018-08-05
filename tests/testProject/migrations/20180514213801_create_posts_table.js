@@ -1,6 +1,5 @@
-
 exports.up = async knex => {
-  if(await knex.schema.hasTable('posts')) return;
+  if (await knex.schema.hasTable('posts')) return;
   return knex.schema.createTable('posts', table => {
     table.increments('id').primary();
     table.timestamps(true, true);
@@ -11,7 +10,7 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
-  if(await knex.schema.hasTable('posts')) {
+  if (await knex.schema.hasTable('posts')) {
     return knex.schema.dropTable('posts');
   }
 };

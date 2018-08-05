@@ -1,2 +1,1 @@
-
-module.exports = rapid => class DiscoverTestController {}
+module.exports = rapid => class DiscoverTestController {};

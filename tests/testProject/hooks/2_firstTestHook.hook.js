@@ -1,4 +1,3 @@
-
 module.exports = {
   runOrder: 1,
 
@@ -96,5 +95,5 @@ module.exports = {
 
   rapidDidStart(rapid) {
     rapid.rapidDidStart__ran = 1;
-  },
+  }
 };
