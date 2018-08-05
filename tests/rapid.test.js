@@ -1,15 +1,5 @@
-const path = require('path');
 const Rapid = require('../lib/Rapid');
-const testProject = path.join(__dirname, 'testProject');
-const createTestRapid = config => {
-  return new Rapid(testProject, config)
-    .clear()
-    .migrate()
-    .seed()
-    .autoload();
-};
-const rapidTest = Rapid.test(createTestRapid);
-const axios = require('axios');
+const { rapidTest, testProject } = require('./testUtils');
 
 describe('Rapid', () => {
   test('Should be a test environment', () => {
@@ -24,16 +14,19 @@ describe('Rapid', () => {
     const rapid = new Rapid(testProject);
     await rapid.start();
     await rapid.stop();
+    await rapid.database.drop();
   });
 
   test('Should be able to start and stop multiple instances', async () => {
     const rapid1 = new Rapid(testProject);
     await rapid1.start();
     await rapid1.stop();
+    await rapid1.database.drop();
 
     const rapid2 = new Rapid(testProject);
     await rapid2.start();
     await rapid2.stop();
+    await rapid2.database.drop();
   });
 
   rapidTest('Should not be able to view changes between tests', async rapid => {
@@ -74,9 +67,7 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should use test database', async rapid => {
-    expect(rapid.database.config.connection.database).toEqual(
-      'rapid_example_test'
-    );
+    expect(/rapid_example_test_.+/.test(rapid.database.config.connection.database)).toBeTruthy();
   });
 
   rapidTest('Should be able to discover routes', async rapid => {
