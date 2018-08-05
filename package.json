@@ -31,7 +31,6 @@
     "objection-db-errors": "^1.0.0",
     "objection-graphql": "^0.4.1",
     "pg": "^7.4.3",
-    "sqlite3": "^4.0.0",
     "then-fs": "^2.0.0",
     "uuid": "^3.2.1"
   },
