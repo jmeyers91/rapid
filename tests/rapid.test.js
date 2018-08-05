@@ -83,8 +83,8 @@ describe('Rapid', () => {
     expect(rapid.modelsDidAttach__ran).toEqual(2);
     expect(rapid.controllersWillAttach__ran).toEqual(2);
     expect(rapid.controllersDidAttach__ran).toEqual(2);
-    expect(rapid.routersWillAttach__ran).toEqual(2);
-    expect(rapid.routersDidAttach__ran).toEqual(2);
+    expect(rapid.routesWillAttach__ran).toEqual(2);
+    expect(rapid.routesDidAttach__ran).toEqual(2);
     expect(rapid.seedsWillRun__ran).toEqual(2);
     expect(rapid.seedsDidRun__ran).toEqual(2);
     expect(rapid.webserverWillListen__ran).toEqual(2);
@@ -99,5 +99,10 @@ describe('Rapid', () => {
 
   rapidTest('Should discover controllers', async rapid => {
     expect(rapid.controllers.userController).toBeTruthy();
+  });
+
+  rapidTest('Should discover routes', async rapid => {
+    const response = await rapid.axios.get('/api/route/test');
+    expect(response.status).toEqual(200);
   });
 });

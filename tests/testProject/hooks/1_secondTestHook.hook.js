@@ -67,12 +67,12 @@ module.exports = rapid => ({
     rapid.controllersDidAttach__ran++;
   },
 
-  routersWillAttach() {
-    rapid.routersWillAttach__ran++;
+  routesWillAttach() {
+    rapid.routesWillAttach__ran++;
   },
 
-  routersDidAttach() {
-    rapid.routersDidAttach__ran++;
+  routesDidAttach() {
+    rapid.routesDidAttach__ran++;
   },
 
   seedsWillRun() {

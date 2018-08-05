@@ -69,12 +69,12 @@ module.exports = {
     rapid.controllersDidAttach__ran = 1;
   },
 
-  routersWillAttach(rapid) {
-    rapid.routersWillAttach__ran = 1;
+  routesWillAttach(rapid) {
+    rapid.routesWillAttach__ran = 1;
   },
 
-  routersDidAttach(rapid) {
-    rapid.routersDidAttach__ran = 1;
+  routesDidAttach(rapid) {
+    rapid.routesDidAttach__ran = 1;
   },
 
   seedsWillRun(rapid) {
