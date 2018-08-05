@@ -67,7 +67,9 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should use test database', async rapid => {
-    expect(/rapid_example_test_.+/.test(rapid.database.config.connection.database)).toBeTruthy();
+    expect(
+      /rapid_example_test_.+/.test(rapid.database.config.connection.database)
+    ).toBeTruthy();
   });
 
   rapidTest('Should be able to discover routes', async rapid => {

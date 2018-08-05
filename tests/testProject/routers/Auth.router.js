@@ -19,7 +19,8 @@ module.exports = rapid => {
       context.response.status = 200;
       context.response.body = 'Welcome guest!';
     })
-    .get('/auth/validateQuery', 
+    .get(
+      '/auth/validateQuery',
       middleware.validate.query({
         required: ['foo', 'bar'],
         properties: {
@@ -29,10 +30,11 @@ module.exports = rapid => {
       }),
       context => {
         context.response.status = 200;
-        context.response.body = context.request.query
+        context.response.body = context.request.query;
       }
     )
-    .post('/auth/validateBody', 
+    .post(
+      '/auth/validateBody',
       middleware.validate.body({
         required: ['foo', 'bar'],
         properties: {
@@ -42,7 +44,7 @@ module.exports = rapid => {
       }),
       context => {
         context.response.status = 200;
-        context.response.body = context.request.body
+        context.response.body = context.request.body;
       }
     );
 };
