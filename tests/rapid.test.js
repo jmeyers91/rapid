@@ -29,22 +29,6 @@ describe('Rapid', () => {
     await rapid2.database.drop();
   });
 
-  rapidTest('Should not be able to view changes between tests', async rapid => {
-    await rapid.models.Post.query().insert([
-      { title: 'Test post', content: 'test post content' }
-    ]);
-  });
-
-  rapidTest(
-    'Should not be able to view changes between tests (VERIFY)',
-    async rapid => {
-      const post = await rapid.models.Post.query()
-        .where('title', 'Test post')
-        .first();
-      expect(post).toBeFalsy();
-    }
-  );
-
   rapidTest('Should run seeds', async rapid => {
     const user = await rapid.models.User.query()
       .where('name', 'Jim')
@@ -106,5 +90,14 @@ describe('Rapid', () => {
     expect(rapid.webserverWillListen__ran).toEqual(2);
     expect(rapid.webserverDidListen__ran).toEqual(2);
     expect(rapid.rapidDidStart__ran).toEqual(2);
+  });
+
+  rapidTest('Should discover models', async rapid => {
+    expect(rapid.models.User).toBeTruthy();
+    expect(rapid.models.Post).toBeTruthy();
+  });
+
+  rapidTest('Should discover controllers', async rapid => {
+    expect(rapid.controllers.userController).toBeTruthy();
   });
 });
