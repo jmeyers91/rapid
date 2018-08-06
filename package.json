@@ -12,6 +12,7 @@
   "dependencies": {
     "@koa/cors": "^2.2.2",
     "ajv": "^6.5.2",
+    "ajv-errors": "^1.0.0",
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "globby": "^8.0.1",
