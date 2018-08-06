@@ -105,4 +105,33 @@ describe('Rapid', () => {
     const response = await rapid.axios.get('/api/route/test');
     expect(response.status).toEqual(200);
   });
+
+  rapidTest('Should discover actions', async rapid => {
+    expect(rapid.actions.testAction).toBeTruthy();
+  });
+
+  rapidTest('Actions should be runnable', async rapid => {
+    expect(await rapid.actions.testAction({foo: 'bar'})).toEqual({foo: 'bar'});
+  });
+
+  rapidTest('Actions should validate their props if passed a schema', async rapid => {
+    const input = {foo: 'abc', bar: 10};
+    expect(await rapid.actions.testActionValidation(input)).toEqual(input);
+  });
+
+  rapidTest('Actions should throw props don\'t match the passed schema', async rapid => {
+    let error;
+    try {
+      const input = {foo: 'abc'};
+      await rapid.actions.testActionValidation(input);
+    } catch(e) {
+      error = e;
+    }
+    expect(error).toBeTruthy();
+  });
+
+  rapidTest('Actions should coerce the types of their props if passed a schema', async rapid => {
+    const input = {foo: 'abc', bar: '10'};
+    expect(await rapid.actions.testActionValidation(input)).toEqual({foo: 'abc', bar: 10});
+  });
 });

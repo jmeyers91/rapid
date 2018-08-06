@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/Rapid.js",
   "scripts": {
-    "test": "export NODE_ENV='test' && jest",
+    "test": "export NODE_ENV='test' && npx jest",
     "format": "npx prettier --single-quote --write \"{lib,example,tests}/**/*.js\""
   },
   "author": "James Meyers",
@@ -16,7 +16,6 @@
     "bcrypt": "^2.0.1",
     "globby": "^8.0.1",
     "graphql": "^0.13.2",
-    "install": "^0.12.1",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
     "koa": "^2.5.1",
