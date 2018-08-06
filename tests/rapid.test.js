@@ -111,27 +111,41 @@ describe('Rapid', () => {
   });
 
   rapidTest('Actions should be runnable', async rapid => {
-    expect(await rapid.actions.testAction({foo: 'bar'})).toEqual({foo: 'bar'});
+    expect(await rapid.actions.testAction({ foo: 'bar' })).toEqual({
+      foo: 'bar'
+    });
   });
 
-  rapidTest('Actions should validate their props if passed a schema', async rapid => {
-    const input = {foo: 'abc', bar: 10};
-    expect(await rapid.actions.testActionValidation(input)).toEqual(input);
-  });
-
-  rapidTest('Actions should throw props don\'t match the passed schema', async rapid => {
-    let error;
-    try {
-      const input = {foo: 'abc'};
-      await rapid.actions.testActionValidation(input);
-    } catch(e) {
-      error = e;
+  rapidTest(
+    'Actions should validate their props if passed a schema',
+    async rapid => {
+      const input = { foo: 'abc', bar: 10 };
+      expect(await rapid.actions.testActionValidation(input)).toEqual(input);
     }
-    expect(error).toBeTruthy();
-  });
+  );
 
-  rapidTest('Actions should coerce the types of their props if passed a schema', async rapid => {
-    const input = {foo: 'abc', bar: '10'};
-    expect(await rapid.actions.testActionValidation(input)).toEqual({foo: 'abc', bar: 10});
-  });
+  rapidTest(
+    "Actions should throw props don't match the passed schema",
+    async rapid => {
+      let error;
+      try {
+        const input = { foo: 'abc' };
+        await rapid.actions.testActionValidation(input);
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toBeTruthy();
+    }
+  );
+
+  rapidTest(
+    'Actions should coerce the types of their props if passed a schema',
+    async rapid => {
+      const input = { foo: 'abc', bar: '10' };
+      expect(await rapid.actions.testActionValidation(input)).toEqual({
+        foo: 'abc',
+        bar: 10
+      });
+    }
+  );
 });
