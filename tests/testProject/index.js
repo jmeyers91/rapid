@@ -1,6 +1,6 @@
 async function main() {
-  const Rapid = require('../lib/Rapid');
-  const rapid = await new Rapid(__dirname)
+  const Rapid = require('../../lib/Rapid');
+  await new Rapid(__dirname)
     .clear()
     .migrate()
     .seed()
