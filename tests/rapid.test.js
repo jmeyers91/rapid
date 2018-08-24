@@ -43,11 +43,11 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should be able to discover controllers', async rapid => {
-    expect(rapid._config.webserver.port).toEqual(10123);
+    expect(rapid.config.webserver.port).toEqual(10123);
   });
 
   rapidTest('Should be able to discover config', async rapid => {
-    expect(rapid._config.database.connection.database).toEqual('rapid_example');
+    expect(rapid.config.database.connection.database).toEqual('rapid_example');
   });
 
   rapidTest('Should use test database', async rapid => {
