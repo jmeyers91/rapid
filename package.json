@@ -16,7 +16,6 @@
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "globby": "^8.0.1",
-    "graphql": "^0.13.2",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.14.6",
     "koa": "^2.5.1",
@@ -30,7 +29,6 @@
     "npm": "^6.2.0",
     "objection": "^1.1.10",
     "objection-db-errors": "^1.0.0",
-    "objection-graphql": "^0.4.1",
     "pg": "^7.4.3",
     "then-fs": "^2.0.0",
     "uuid": "^3.2.1"
