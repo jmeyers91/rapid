@@ -29,6 +29,7 @@
     "npm": "^6.2.0",
     "objection": "^1.1.10",
     "objection-db-errors": "^1.0.0",
+    "parse-database-url": "^0.3.0",
     "pg": "^7.4.3",
     "then-fs": "^2.0.0",
     "uuid": "^3.2.1"
