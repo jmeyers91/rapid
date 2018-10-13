@@ -43,11 +43,11 @@ describe('Rapid', () => {
   });
 
   rapidTest('Should be able to discover controllers', async rapid => {
-    expect(rapid.config.webserver.port).toEqual(10123);
+    expect(rapid.controllers.userController).toBeTruthy();
   });
 
   rapidTest('Should be able to discover config', async rapid => {
-    expect(rapid.config.database.connection.database).toEqual('rapid_example');
+    expect(rapid.config.testConfigValue).toEqual(true);
   });
 
   rapidTest('Should use test database', async rapid => {
@@ -125,7 +125,7 @@ describe('Rapid', () => {
   );
 
   rapidTest(
-    "Actions should throw props don't match the passed schema",
+    `Actions should throw props don't match the passed schema`,
     async rapid => {
       let error;
       try {
