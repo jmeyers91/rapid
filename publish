@@ -1,29 +1,4 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const execa = require('execa');
-const { writeFile } = require('then-fs');
-
-const cwd = __dirname;
-
-async function main() {
-  const version = await bumpVersion();
-
-  await execa('git', ['add', '*'], {cwd});
-  await execa('git', ['commit', '-am', '🚀 ' + version], {cwd});
-  await execa('git', ['push', 'origin', 'master'], {cwd});
-  await execa('npm', ['publish', '--access=public'], {cwd});
-  console.log(`@simplej/rapid version ${version} published`);
-
-  return version;
-}
-
-async function bumpVersion() {
-  const package = require('./package');
-  const [ major, minor, patch ] = package.version.split(/\./g).map(n => +n);
-  package.version = `${major}.${minor}.${patch + 1}`;
-  await writeFile(path.join(__dirname, 'package.json'), JSON.stringify(package, null, 2));
-  return package.version
-}
-
-module.exports = main();
+const level = process.argv[2] || 'minor';
+require('../publish')(__dirname, level);
