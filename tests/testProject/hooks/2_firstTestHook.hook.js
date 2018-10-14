@@ -95,5 +95,5 @@ module.exports = {
 
   rapidDidStart(rapid) {
     rapid.rapidDidStart__ran = 1;
-  }
+  },
 };

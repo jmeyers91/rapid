@@ -11,22 +11,9 @@ describe('Rapid', () => {
   });
 
   test('Should be able to start and stop an instance', async () => {
-    const rapid = new Rapid(testProject);
+    const rapid = new Rapid(testProject).autoload();
     await rapid.start();
     await rapid.stop();
-    await rapid.database.drop();
-  });
-
-  test('Should be able to start and stop multiple instances', async () => {
-    const rapid1 = new Rapid(testProject);
-    await rapid1.start();
-    await rapid1.stop();
-    await rapid1.database.drop();
-
-    const rapid2 = new Rapid(testProject);
-    await rapid2.start();
-    await rapid2.stop();
-    await rapid2.database.drop();
   });
 
   rapidTest('Should run seeds', async rapid => {
@@ -52,7 +39,7 @@ describe('Rapid', () => {
 
   rapidTest('Should use test database', async rapid => {
     expect(
-      /rapid_example_test_.+/.test(rapid.database.config.connection.database)
+      /rapid_example_test_.+/.test(rapid.database.config.connection.database),
     ).toBeTruthy();
   });
 
@@ -112,7 +99,7 @@ describe('Rapid', () => {
 
   rapidTest('Actions should be runnable', async rapid => {
     expect(await rapid.actions.testAction({ foo: 'bar' })).toEqual({
-      foo: 'bar'
+      foo: 'bar',
     });
   });
 
@@ -121,7 +108,7 @@ describe('Rapid', () => {
     async rapid => {
       const input = { foo: 'abc', bar: 10 };
       expect(await rapid.actions.testActionValidation(input)).toEqual(input);
-    }
+    },
   );
 
   rapidTest(
@@ -135,7 +122,7 @@ describe('Rapid', () => {
         error = e;
       }
       expect(error).toBeTruthy();
-    }
+    },
   );
 
   rapidTest(
@@ -144,8 +131,8 @@ describe('Rapid', () => {
       const input = { foo: 'abc', bar: '10' };
       expect(await rapid.actions.testActionValidation(input)).toEqual({
         foo: 'abc',
-        bar: 10
+        bar: 10,
       });
-    }
+    },
   );
 });

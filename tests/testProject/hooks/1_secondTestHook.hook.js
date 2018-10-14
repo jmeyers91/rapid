@@ -93,7 +93,7 @@ module.exports = rapid => ({
 
   rapidDidStart() {
     rapid.rapidDidStart__ran++;
-  }
+  },
 });
 
 module.exports.runOrder = 10;

@@ -10,14 +10,14 @@ describe('Rapid utils', () => {
       /* 5 */ { id: 6 },
       /* 6 */ { id: 7, runOrder: 1 },
       /* 7 */ { id: 8, runOrder: 3 },
-      /* 8 */ { id: 9, runOrder: 2 }
+      /* 8 */ { id: 9, runOrder: 2 },
     ];
 
     const expectedResult = [
       [testValues[0], testValues[6]],
       [testValues[3], testValues[8]],
       [testValues[4], testValues[7]],
-      [testValues[1], testValues[2], testValues[5]]
+      [testValues[1], testValues[2], testValues[5]],
     ];
 
     expect(chunkByRunOrder(testValues)).toEqual(expectedResult);
@@ -50,7 +50,7 @@ describe('Rapid utils', () => {
           wait(300).then(() => {
             firstCounter++;
             return '1 4';
-          })
+          }),
       ],
 
       [
@@ -71,7 +71,7 @@ describe('Rapid utils', () => {
             secondCounter++;
             expect(firstCounter).toEqual(4);
             return '2 3';
-          })
+          }),
       ],
 
       [
@@ -92,8 +92,8 @@ describe('Rapid utils', () => {
             thirdCounter++;
             expect(secondCounter).toEqual(3);
             return '3 3';
-          })
-      ]
+          }),
+      ],
     ];
 
     const results = await chunkedAsync(fns, fn => fn());
@@ -103,7 +103,7 @@ describe('Rapid utils', () => {
     expect(results).toEqual([
       ['1 1', '1 2', '1 3', '1 4'],
       ['2 1', '2 2', '2 3'],
-      ['3 1', '3 2', '3 3']
+      ['3 1', '3 2', '3 3'],
     ]);
   });
 });

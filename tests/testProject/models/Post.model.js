@@ -11,8 +11,8 @@ module.exports = rapid => {
         properties: {
           id: { type: 'integer' },
           title: { type: 'string', minLength: 2 },
-          content: { type: 'string', minLength: 2 }
-        }
+          content: { type: 'string', minLength: 2 },
+        },
       };
     }
   };

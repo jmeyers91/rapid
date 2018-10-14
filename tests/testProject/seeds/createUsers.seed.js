@@ -7,7 +7,7 @@ module.exports = async function createUsers(rapid) {
     {
       name: 'Sarah',
       username: 'sarah',
-      password: await hashPassword('pineapple')
-    }
+      password: await hashPassword('pineapple'),
+    },
   ]);
 };

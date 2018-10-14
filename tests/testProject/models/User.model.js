@@ -12,8 +12,8 @@ module.exports = rapid => {
           id: { type: 'integer' },
           name: { type: 'string', minLength: 2 },
           username: { type: 'string', minLength: 2 },
-          password: { type: 'string', minLength: 2 }
-        }
+          password: { type: 'string', minLength: 2 },
+        },
       };
     }
   };

@@ -1,4 +1,3 @@
-
 module.exports = {
-  testConfigValue: true
+  testConfigValue: true,
 };

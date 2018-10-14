@@ -6,8 +6,8 @@ module.exports = rapid =>
       required: ['foo', 'bar'],
       properties: {
         foo: { type: 'string' },
-        bar: { type: 'number' }
-      }
+        bar: { type: 'number' },
+      },
     },
-    props => props
+    props => props,
   );

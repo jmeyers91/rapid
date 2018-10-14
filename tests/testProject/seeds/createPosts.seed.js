@@ -3,6 +3,6 @@ module.exports = async function createPosts(rapid) {
 
   return Post.query().insert([
     { title: 'First post', content: 'Hello world!' },
-    { title: 'Second post', content: 'Lorem ipsum' }
+    { title: 'Second post', content: 'Lorem ipsum' },
   ]);
 };

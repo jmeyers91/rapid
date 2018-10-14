@@ -7,7 +7,7 @@ module.exports = rapid => {
     .post('/auth/login', middleware.login(loginUser), context => {
       context.response.body = {
         authToken: context.state.authToken,
-        user: context.state.user
+        user: context.state.user,
       };
       context.response.status = 200;
     })
@@ -25,13 +25,13 @@ module.exports = rapid => {
         required: ['foo', 'bar'],
         properties: {
           foo: { type: 'string', minLength: 2 },
-          bar: { type: 'number' }
-        }
+          bar: { type: 'number' },
+        },
       }),
       context => {
         context.response.status = 200;
         context.response.body = context.request.query;
-      }
+      },
     )
     .post(
       '/auth/validateBody',
@@ -39,12 +39,12 @@ module.exports = rapid => {
         required: ['foo', 'bar'],
         properties: {
           foo: { type: 'string', minLength: 2 },
-          bar: { type: 'number' }
-        }
+          bar: { type: 'number' },
+        },
       }),
       context => {
         context.response.status = 200;
         context.response.body = context.request.body;
-      }
+      },
     );
 };
