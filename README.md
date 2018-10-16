@@ -1,21 +1,30 @@
 # Rapid
 
+A Node.js framework for quickly building API servers backed by a PostgreSQL database.
+
 ## Install
 
 ```bash
 npm install @simplej/rapid
-npm install --global @simplej/rapid-cli
 ```
 
-## Create a Rapid app
+## Getting started
+
+Install the [Rapid CLI](https://github.com/jmeyers91/rapid-cli) and use it to scaffold an app.
 
 ```bash
+npm install --global @simplej/rapid-cli
 rapid init my_app
+```
+
+Start your new app.
+
+```bash
 cd my_app
 npm run start
 ```
 
-This creates a project with a basic directory structure and a few example modules.
+Now connect at http://localhost:9090
 
 ## Using the Rapid CLI
 
