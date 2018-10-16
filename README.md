@@ -160,7 +160,7 @@ rapid.addSeeds(
 
 ### Migrations
 
-Database migrations for migrating the structure of the database.
+Database migrations for migrating the structure of the database. Migrations are handled by [Knex](https://knexjs.org/).
 
 ### Middleware
 
