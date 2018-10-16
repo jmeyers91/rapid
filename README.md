@@ -2,14 +2,14 @@
 
 ## Install
 
-```
+```bash
 npm install @simplej/rapid
 npm install --global @simplej/rapid-cli
 ```
 
 ## Create a Rapid app
 
-```
+```bash
 rapid init my_app
 cd my_app
 npm run start
@@ -98,7 +98,7 @@ Routes and routers allow you to handle incoming HTTP requests. Rapid uses [Koa](
 
 Routes can be added using the rapid `api` property:
 
-```
+```js
 rapid.api
   .get('/user/:userId', someMiddleware(), async context => {
     const userId = +context.params.userId;
@@ -117,7 +117,7 @@ Hooks allow you to run arbitrary code at different points in the rapid lifecycle
 
 Hooks can be added using the rapid `addHook` method:
 
-```
+```js
 rapid.addHook({
   async modelsDidAttach(rapid) {
     // do something after models attach
