@@ -223,3 +223,17 @@ const valid = await rapid.helpers.verifyPassword(password, user.hashedPassword);
 
 console.log('The credentials are ' + valid ? 'correct' : 'incorrect');
 ```
+
+#### `verifyAuthToken`
+
+Checks if an JWT auth token is valid. Returns a promise that resolves the token's payload or rejects an error if the token is invalid.
+
+```js
+const authToken = 'Bearer ...';
+try {
+  const user = await rapid.helpers.verifyAuthToken(authToken);
+  console.log('Auth token is valid', user);
+} catch(error) {
+  console.log('Auth token is invalid', error);
+}
+```
