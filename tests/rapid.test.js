@@ -1,3 +1,4 @@
+jest.setTimeout(60000);
 const Rapid = require('../lib/Rapid');
 const { rapidTest, testProject } = require('./testUtils');
 
@@ -132,6 +133,36 @@ describe('Rapid', () => {
       expect(await rapid.actions.testActionValidation(input)).toEqual({
         foo: 'abc',
         bar: 10,
+      });
+    },
+  );
+
+  rapidTest(
+    'Socket should receive and send events',
+    async rapid => {
+      // const socket = rapid.io(`http://localhost:${rapid.webserver.resolvedPort}`);
+      const socket = rapid.socket;
+
+      await new Promise((resolve) => {
+        socket.on('success', () => {
+          resolve();
+        });
+        socket.emit('test');
+      });
+    },
+  );
+
+  rapidTest(
+    'Socket should receive and send events 2',
+    async rapid => {
+      // const socket = rapid.io(`http://localhost:${rapid.webserver.resolvedPort}`);
+      const socket = rapid.socket;
+
+      await new Promise((resolve) => {
+        socket.on('success', () => {
+          resolve();
+        });
+        socket.emit('test');
       });
     },
   );

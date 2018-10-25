@@ -1,6 +1,7 @@
 const uuid = require('uuid/v4');
 
 module.exports = {
+  socketIO: true,
   webserver: {
     port: 'auto',
   },

@@ -32,6 +32,8 @@
     "objection-db-errors": "^1.0.0",
     "parse-database-url": "^0.3.0",
     "pg": "^7.4.3",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "then-fs": "^2.0.0",
     "uuid": "^3.2.1"
   },
