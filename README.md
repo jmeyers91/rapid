@@ -314,3 +314,7 @@ try {
   console.log('Auth token is invalid', error);
 }
 ```
+
+## License
+
+Rapid is [MIT licensed](./LICENSE).
