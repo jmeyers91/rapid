@@ -1,3 +1,4 @@
+jest.setTimeout(60000);
 const { rapidTest } = require('./testUtils');
 
 describe('login middleware', () => {
@@ -186,6 +187,62 @@ describe('validate body middleware', () => {
         foo: 'somestring',
       });
       expect(response.data.error).toBeTruthy();
+    },
+  );
+
+  rapidTest(
+    'socketAuth should allow users with valid auth tokens',
+    async rapid => {
+      const loginResponse = await rapid.axios.post('/api/auth/login', {
+        username: 'user',
+        password: 'secret',
+      });
+      const { authToken } = loginResponse.data;
+      const socket = rapid.io('/protectedTestNamespace', {
+        query: { authToken }
+      });
+
+      await new Promise((resolve, reject) => {
+        socket.on('protectedTestNamespaceEventSuccess', () => {
+          resolve();
+        });
+        socket.emit('protectedTestNamespaceEvent');
+        setTimeout(() => reject(new Error('Took too long')), 3000);
+      });
+    },
+  );
+
+  rapidTest(
+    'socketAuth should not allow users without auth tokens',
+    async rapid => {
+      const socket = rapid.io('/protectedTestNamespace');
+
+      await new Promise((resolve, reject) => {
+        socket.on('connect', () => reject('Should not be able to connect'));
+        socket.on('error', error => {
+          if(error === 'Authentication error') resolve();
+          else reject(new Error('Wrong error: ' + error));
+        });
+      });
+    },
+  );
+
+  rapidTest(
+    'socketAuth should not allow users with invalid auth tokens',
+    async rapid => {
+      const socket = rapid.io('/protectedTestNamespace', {
+        query: {
+          authToken: 'some invalid auth token'
+        }
+      });
+
+      await new Promise((resolve, reject) => {
+        socket.on('connect', () => reject('Should not be able to connect'));
+        socket.on('error', error => {
+          if(error === 'Authentication error') resolve();
+          else reject(new Error('Wrong error: ' + error));
+        });
+      });
     },
   );
 });
