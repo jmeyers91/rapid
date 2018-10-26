@@ -44,6 +44,30 @@ Now connect at http://localhost:9090
 
 ## API
 
+### `new Rapid(rootPath)`
+
+Create a new rapid instance.
+
+```js
+const rapid = await Rapid('/my/app/dir');
+```
+
+### `rapid.start() -> rapid`
+
+Start the rapid app. Starts the database, webserver, etc. and resolving any added modules (models, seeds, actions, etc.). Returns a promise that resolves the rapid instance when complete.
+
+```js
+const rapid = await Rapid('/my/app/dir').start();
+```
+
+### `rapid.autoload() -> rapid`
+
+Rapid has built in support for loading app modules using filename and directory conventions. Meaning models, seeds, actions, routes, etc. will be loaded relative to the root path passed to the `Rapid` constructor. This can be enabled by calling the `autoload` method on the rapid instance.
+
+```js
+const rapid = await Rapid('/my/app/dir').autoload().start();
+```
+
 ### Models
 
 Rapid used the [Objection.js](http://vincit.github.io/objection.js/) ORM's `Model` class. Models are added to rapid using the `addModel` method.
