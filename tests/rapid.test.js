@@ -113,6 +113,16 @@ describe('Rapid', () => {
   );
 
   rapidTest(
+    'Actions endpoint methods should pass request props to the action',
+    async rapid => {
+      const input = { foo: 'abc', bar: 10 };
+      const response = await rapid.axios.post('/api/testActionEndpoints', input);
+      expect(response.data).toEqual(input);
+      // expect(await rapid.actions.testActionValidation(input)).toEqual(input);
+    },
+  );
+
+  rapidTest(
     `Actions should throw props don't match the passed schema`,
     async rapid => {
       let error;

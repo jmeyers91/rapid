@@ -1,6 +1,6 @@
 module.exports = rapid =>
   rapid
-    .action('testActionValidation')
+    .action('testActionEndpoints')
     .schema({
       type: 'object',
       required: ['foo', 'bar'],
@@ -9,5 +9,6 @@ module.exports = rapid =>
         bar: { type: 'number' },
       },
     })
+    .postAuto('/testActionEndpoints')
     .receiver(props => props);
 
