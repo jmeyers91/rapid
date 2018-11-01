@@ -207,7 +207,7 @@ describe('validate body middleware', () => {
           resolve();
         });
         socket.emit('protectedTestNamespaceEvent');
-        setTimeout(() => reject(new Error('Took too long')), 3000);
+        setTimeout(() => reject(new Error('Took too long')), 5000);
       });
     },
   );
