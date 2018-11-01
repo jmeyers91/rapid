@@ -5,19 +5,21 @@ module.exports = rapid => {
 
   return new rapid.Router()
     .post('/auth/login', middleware.login(loginUser), context => {
-      context.response.body = {
+      // context.response.body = {
+      //   authToken: context.state.authToken,
+      //   user: context.state.user,
+      // };
+      // context.response.status = 200;
+      context.success({
         authToken: context.state.authToken,
         user: context.state.user,
-      };
-      context.response.status = 200;
+      });
     })
     .get('/auth/secure', middleware.auth(), context => {
-      context.response.status = 200;
-      context.response.body = 'Access granted!';
+      context.success('Access granted!');
     })
     .get('/auth/insecure', context => {
-      context.response.status = 200;
-      context.response.body = 'Welcome guest!';
+      context.success('Welcome guest!');
     })
     .get(
       '/auth/validateQuery',
@@ -29,8 +31,7 @@ module.exports = rapid => {
         },
       }),
       context => {
-        context.response.status = 200;
-        context.response.body = context.request.query;
+        context.success(context.request.query);
       },
     )
     .post(
@@ -43,8 +44,7 @@ module.exports = rapid => {
         },
       }),
       context => {
-        context.response.status = 200;
-        context.response.body = context.request.body;
+        context.success(context.request.body);
       },
     );
 };
