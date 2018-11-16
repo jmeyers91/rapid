@@ -104,7 +104,7 @@ Actions are added to rapid using the `action` method and can optionally include 
 
 ```js
 rapid.action(
-  'getUserByUsername',
+  'add',
   {
     type: 'object',
     required: ['a', 'b'],
