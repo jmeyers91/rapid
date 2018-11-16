@@ -100,7 +100,7 @@ const users = await rapid.models.User.query();
 
 ### Actions
 
-Actions are added to rapid using the `action` method and can optionally include a input schema for validation. All actions are asynchronous.
+Actions are added to rapid using the `action` method and can optionally include an input schema for validation. All actions are asynchronous.
 
 ```js
 rapid.action(
