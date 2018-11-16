@@ -28,7 +28,7 @@ Now connect at http://localhost:9090
 
 ## Using the Rapid CLI
 
-`rapid init` - Create a blank Rapid project.
+`rapid init [name]` - Create a blank Rapid project.
 
 `rapid` - Start the app in the current directory using the models, controllers, and API routers found in the project.
 
