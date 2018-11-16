@@ -5,7 +5,7 @@ A Node.js framework for quickly building API servers backed by a PostgreSQL data
 ## Install
 
 ```bash
-npm install @simplej/rapid
+npm install @simplej/rapid @simplej/rapid-cli
 ```
 
 ## Getting started
