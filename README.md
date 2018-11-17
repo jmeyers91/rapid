@@ -34,7 +34,7 @@ Now connect at http://localhost:9090
 
 `rapid --root ./path/to/app` - Pass a directory to rapid instead of using the current directory.
 
-`rapid watch` - Start the app and restart on changes.
+`rapid watch` - Start the app and restart on changes and enables a REPL for easily running code against your rapid server.
 
 `rapid migrate` - Run the migrations in `./migrations`.
 
