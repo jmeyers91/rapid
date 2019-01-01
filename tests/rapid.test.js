@@ -40,7 +40,7 @@ describe('Rapid', () => {
 
   rapidTest('Should use test database', async rapid => {
     expect(
-      /rapid_example_test_.+/.test(rapid.database.config.connection.database),
+      /rapid_test_.+/.test(rapid.database.config.connection.database),
     ).toBeTruthy();
   });
 

@@ -1,6 +1,6 @@
 const uuid = require('uuid/v4');
 
-module.exports = {
+module.exports = () => ({
   socketIO: true,
   webserver: {
     port: 'auto',
@@ -8,7 +8,7 @@ module.exports = {
   database: {
     dropWhenFinished: true,
     connection: {
-      database: 'rapid_example_test_' + uuid().replace(/-/g, '_'),
+      database: 'rapid_test_' + uuid().replace(/-/g, '_'),
     },
   },
-};
+});
