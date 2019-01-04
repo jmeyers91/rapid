@@ -199,7 +199,7 @@ describe('validate body middleware', () => {
       });
       const { authToken } = loginResponse.data;
       const socket = rapid.io('/protectedTestNamespace', {
-        query: { authToken }
+        query: { authToken },
       });
 
       await new Promise((resolve, reject) => {
@@ -220,7 +220,7 @@ describe('validate body middleware', () => {
       await new Promise((resolve, reject) => {
         socket.on('connect', () => reject('Should not be able to connect'));
         socket.on('error', error => {
-          if(error === 'Authentication error') resolve();
+          if (error === 'Authentication error') resolve();
           else reject(new Error('Wrong error: ' + error));
         });
       });
@@ -232,14 +232,14 @@ describe('validate body middleware', () => {
     async rapid => {
       const socket = rapid.io('/protectedTestNamespace', {
         query: {
-          authToken: 'some invalid auth token'
-        }
+          authToken: 'some invalid auth token',
+        },
       });
 
       await new Promise((resolve, reject) => {
         socket.on('connect', () => reject('Should not be able to connect'));
         socket.on('error', error => {
-          if(error === 'Authentication error') resolve();
+          if (error === 'Authentication error') resolve();
           else reject(new Error('Wrong error: ' + error));
         });
       });

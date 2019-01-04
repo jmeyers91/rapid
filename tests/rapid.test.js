@@ -116,7 +116,10 @@ describe('Rapid', () => {
     'Actions endpoint methods should pass request props to the action',
     async rapid => {
       const input = { foo: 'abc', bar: 10 };
-      const response = await rapid.axios.post('/api/testActionEndpoints', input);
+      const response = await rapid.axios.post(
+        '/api/testActionEndpoints',
+        input,
+      );
       expect(response.data).toEqual(input);
       // expect(await rapid.actions.testActionValidation(input)).toEqual(input);
     },
@@ -147,33 +150,27 @@ describe('Rapid', () => {
     },
   );
 
-  rapidTest(
-    'Socket should receive and send events',
-    async rapid => {
-      const socket = rapid.io();
+  rapidTest('Socket should receive and send events', async rapid => {
+    const socket = rapid.io();
 
-      await new Promise((resolve, reject) => {
-        socket.on('success', () => {
-          resolve();
-        });
-        socket.emit('test');
-        setTimeout(() => reject(new Error('Took too long')), 3000);
+    await new Promise((resolve, reject) => {
+      socket.on('success', () => {
+        resolve();
       });
-    },
-  );
+      socket.emit('test');
+      setTimeout(() => reject(new Error('Took too long')), 3000);
+    });
+  });
 
-  rapidTest(
-    'Should be able to connect to namespaces',
-    async rapid => {
-      const socket = rapid.io('/testNamespace');
+  rapidTest('Should be able to connect to namespaces', async rapid => {
+    const socket = rapid.io('/testNamespace');
 
-      await new Promise((resolve, reject) => {
-        socket.on('testNamespaceEventSuccess', () => {
-          resolve();
-        });
-        socket.emit('testNamespaceEvent');
-        setTimeout(() => reject(new Error('Took too long')), 3000);
+    await new Promise((resolve, reject) => {
+      socket.on('testNamespaceEventSuccess', () => {
+        resolve();
       });
-    },
-  );
+      socket.emit('testNamespaceEvent');
+      setTimeout(() => reject(new Error('Took too long')), 3000);
+    });
+  });
 });

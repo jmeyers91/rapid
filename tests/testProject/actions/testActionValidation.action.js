@@ -10,4 +10,3 @@ module.exports = rapid =>
       },
     })
     .receiver(props => props);
-
