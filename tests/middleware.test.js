@@ -114,6 +114,29 @@ describe('auth middleware', () => {
       expect(response.status).toEqual(401);
     },
   );
+
+  rapidTest(
+    'Should use up-to-date model if Model option is passed',
+    async rapid => {
+      const loginResponse = await rapid.axios.post('/api/auth/login', {
+        username: 'user',
+        password: 'secret',
+      });
+      const { authToken } = loginResponse.data;
+      await rapid.axios.get('/api/auth/secure-with-model-mutate', {
+        headers: {
+          Authorization: authToken,
+        },
+      });
+      const response = await rapid.axios.get('/api/auth/secure-with-model', {
+        headers: {
+          Authorization: authToken,
+        },
+      });
+
+      expect(response.data.user.name).toEqual('CHANGED');
+    },
+  );
 });
 
 describe('validate query middleware', () => {
