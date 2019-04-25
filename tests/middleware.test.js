@@ -137,6 +137,29 @@ describe('auth middleware', () => {
       expect(response.data.user.name).toEqual('CHANGED');
     },
   );
+
+  rapidTest(
+    "Should respond with 401 if the Model option is passed, but the JWT model doesn't exist",
+    async rapid => {
+      const loginResponse = await rapid.axios.post('/api/auth/login', {
+        username: 'user',
+        password: 'secret',
+      });
+      const { authToken } = loginResponse.data;
+      await rapid.axios.get('/api/auth/secure-with-model-delete', {
+        headers: {
+          Authorization: authToken,
+        },
+      });
+      const response = await rapid.axios.get('/api/auth/secure-with-model', {
+        headers: {
+          Authorization: authToken,
+        },
+      });
+
+      expect(response.status).toEqual(401);
+    },
+  );
 });
 
 describe('validate query middleware', () => {

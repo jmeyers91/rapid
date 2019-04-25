@@ -24,6 +24,14 @@ module.exports = rapid => {
         .where('id', userId);
       context.success();
     })
+    .get('/auth/secure-with-model-delete', middleware.auth(), async context => {
+      const userId = context.state.user.id;
+      const { User } = rapid.models;
+      await User.query()
+        .delete()
+        .where('id', userId);
+      context.success();
+    })
     .get(
       '/auth/secure-with-model',
       middleware.auth(rapid.models.User),
