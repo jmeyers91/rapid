@@ -20,7 +20,7 @@
     "get-port": "^4.0.0",
     "globby": "^8.0.1",
     "jsonwebtoken": "^8.3.0",
-    "knex": "^0.15.2",
+    "knex": "^0.19.5",
     "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.1",
     "koa-jwt": "^3.3.2",
